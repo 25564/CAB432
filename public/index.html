@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Amazon Light Map</title>
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwkvLfvQwFowxF7_WyMuMC1hLvXGz4Tg0">
+  </script>  
+  <script src="scripts.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">  
+</head>
+<body onload="initialize()">
+    <header>
+      <div class="container">
+        <h1 class="header__Logo">Amazon Light Map</h1>
+      </div>
+    </header>
+    <div class="row">
+      <div id="map" style="width: 100%; height: 340px;"></div>        
+    </div>
+    <div class="row relativeWrap">
+      <div class="SearchWrapper">
+        <div class="row">
+          <div class="col-sm-8">
+            <input placeholder="Place name ie Sydney" onkeypress="handleEnter(event)" id="address" type="text">              
+          </div>
+          <div class="col-sm-4">
+            <input type="button" value="Search" onclick="codeAddress()">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ResultsSegment">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm baseSegment">
+            <h6>Location Info: </h6>
+            <p class="DataPoint">Longitude: <span id='LongitudeResult'></span></p>                
+            <p class="DataPoint">Latitude: <span id='LatitudeResult'></span></p>
+            <p class="DataPoint">Name: <span id='NameResult'></span></p>                    
+            <a onclick="AddSelection()" class="SubmitLocationButton">Add Location</a>
+          </div>
+          <div class="col-sm baseSegment">
+            <h6>List of Places: </h6>
+            <ul id="PlacesSelectedList"></ul>
+            <a onclick="SearchSubmit()" class="SubmitLocationButton">Search Location</a>            
+          </div>
+          <div class="col-sm baseSegment">
+            <h6>Closest Zones: </h6>    
+            <ol id="SortedRegionsList"></ol>            
+          </div>
+        </div>
+      </div>
+    </div>
+   </body>
+</html>
