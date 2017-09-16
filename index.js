@@ -3,6 +3,9 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const bodyParser = require('body-parser')
+
+const PORT = 8080;
+const HOST = '0.0.0.0';
 const GoogleAPIKey = 'AIzaSyAwkvLfvQwFowxF7_WyMuMC1hLvXGz4Tg0';
 
 const retrieveAmazonZone = () =>
@@ -58,7 +61,6 @@ const SortClosest = (LocationA, LocationB) => {
 }
 
 app.use(bodyParser.json());
-
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.post('/search', function (req, res) {
@@ -85,4 +87,5 @@ app.post('/search', function (req, res) {
   ).then(data => res.send(data.sort(SortClosest))); // Return Sorted array
 });
 
-app.listen(3000)
+app.listen(PORT, HOST);
+console.log(`Running on http://${HOST}:${PORT}`);
